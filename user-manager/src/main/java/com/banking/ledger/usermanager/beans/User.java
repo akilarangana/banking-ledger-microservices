@@ -29,5 +29,5 @@ public class User {
     private String password;
 
     @Column(name = "base_currency")
-    private int baseCurrency;
+    private String baseCurrency;
 }

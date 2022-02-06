@@ -16,6 +16,12 @@ public class AuthenticationController {
     @Autowired
     AuthenticationService authenticationService;
 
+    /**
+     * get the username and password as request params and check whether the given combination is matched
+     * @param userName
+     * @param password
+     * @return ResponseEntity with ok or forbidden response
+     */
     @GetMapping(path = "/authenticate")
     public ResponseEntity getCurrencyByCode(@RequestParam(value = "userName") String userName,
                                             @RequestParam(value = "password") String password) {
@@ -28,6 +34,12 @@ public class AuthenticationController {
         }
     }
 
+    /**
+     * validate username against the token
+     * @param userName
+     * @param token
+     * @return ResponseEntity with ok or forbidden response
+     */
     @GetMapping(path = "/validate")
     public ResponseEntity validateToken(@RequestParam(value = "userName") String userName,
                                             @RequestParam(value = "token") String token) {

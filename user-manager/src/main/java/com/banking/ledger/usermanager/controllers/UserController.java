@@ -14,6 +14,11 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /**
+     * user can get the user object by it is userId
+     * @param userId
+     * @return user object
+     */
     @GetMapping(path = "/get/{userId}")
     public ResponseEntity getUserById(@PathVariable(value = "userId") int userId) {
         try {
@@ -24,6 +29,11 @@ public class UserController {
         }
     }
 
+    /**
+     * user creation need to be done via this endpoint.
+     * @param user
+     * @return created user with user id
+     */
     @PostMapping(path = "/create")
     public User createBank(@RequestBody User user) {
         return userService.createUser(user);
