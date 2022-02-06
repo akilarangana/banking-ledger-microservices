@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: API-GATEWAY
+  cloud:
+    gateway:
+      routes:
+        - id: bank-service
+          uri: lb://BANK-MANAGER
+          predicates:
+            - Path=/banks/**,/currencies/**
+        - id: user-service
+          uri: lb://USER-MANAGER
+          predicates:
+             - Path=/users/**,/auth/**
+        - id: transaction-service
+          uri: lb://TRANSACTION-MANAGER
+          predicates:
+            - Path=/transactions/**
+        - id: account-service
+          uri: lb://ACCOUNT-MANAGER
+          predicates:
+            - Path=/accounts/**,/accountBalance/**
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    instance:
+      hostname: localhost
+server:
+  port: 8989
